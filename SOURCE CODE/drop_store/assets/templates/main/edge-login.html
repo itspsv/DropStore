@@ -1,0 +1,304 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    {% load static %}
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Drop-Store</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'main/img/favicon.ico' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <style>a:active {
+        color: rgb(159, 21, 193);
+      } </style>
+    
+    
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    </head>
+    
+    <body>
+    
+    <script type="text/javascript">
+        function loginvalidation() {
+            var username = document.myform.email
+            var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+            var password = document.myform.password
+            
+    
+            
+            if (username.value.length <= 0) {
+                alert("Please enter your email")
+                username.focus();
+                return false;
+            }
+    
+        
+            if (password.value.length <= 0) {
+                alert("Please Enter The password")
+                password.focus();
+                return false;
+            }
+    
+            
+        }   
+    </script>
+    
+    {% csrf_token %}
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <script>swal({
+              title: "Logged In Successfully!",
+              text: "{{message}}",
+              icon: "success",
+              button: "OK",
+          });
+      </script>
+    
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+      <script>swal({
+              title: "Warning :)",
+              text: "{{message}}",
+              icon: "warning",
+              button: "OK",
+          });
+      </script>
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+      <script>swal({
+              title: "error :)",
+              text: "{{message}}",
+              icon: "error",
+              button: "OK",
+          });
+      </script>
+      {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <script>swal({
+              title: "error :)",
+              text: "{{message}}",
+              icon: "error",
+              button: "OK",
+          });
+      </script>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    
+    
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'main/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="#"><img src="{% static 'main/img/11.png' %}" style="width:70px; border-radius: 10px; " alt=""> <span style="font-size: 21px;">Drop Store</span></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">                                                                                          
+                                                <li><a href="{% url 'home' %}">Home</a></li>
+                                                <li class="active"><a href="{% url 'edge_login' %}">Edge-Nodes</a>
+                                                </li>
+                                                <li><a href="{% url 'droplet_login' %}">droplet</a></li>
+                                                <li><a href="{% url 'public_login' %}">public cloud</a>
+                                                </li>
+                                                <li><a href="{% url 'dropstore_login' %}">drop-store system</a></li>
+                                                <!-- Button -->
+                                                <!-- <li class="button-header margin-left "><a href="#" class="btn">Sign Up</a></li>
+                                                <li class="button-header"><a href="#" class="btn3">Sign In</a></li> -->
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!-- Slider Area Start-->
+        
+       
+        
+    </div>
+    <!-- Domain-search End -->
+    <!--? Team -->
+    <section class="team-area section-padding40 section-bg1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-12">
+                    <div >
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <h1 class="text-center" style="color: white;font-size: 30px">Edge Login Here!</h1><br>
+            <h3 class="text-center" style="color: white;">Edge Login</h3><br>
+            <div class="row justify-content-end">
+                
+                <div class=" col-xl-8">
+                    <form class="mt-1 mb-1 login-input" method="post" enctype="multipart/form-data" onsubmit='return loginvalidation();' name='myform'>
+                        {% csrf_token %}
+                        <div class="form-group w-50 ">
+                            <input type="text" class="form-control" style="height:60px;font-size: larger;" name="email"  placeholder="Email" >
+                        </div>
+                        <div class="form-group w-50">
+                            <input type="password" class="form-control w-40" style="height:60px;font-size: larger;" name="password" placeholder="Password">
+                        </div>
+                        <button class="btn login-form__btn submit w-12 mt-5" style="left:120px;height:4px;">Sign In</button>
+
+                        <div class="row justify-content-center" style="padding-right:370px;">
+                            <p class="mt-5 login-form__footer">Dont have account? <a href="{% url 'user_reg' %}" class="text-primary">Sign Up</a> now</p>
+                             </div>
+                        
+                        
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+    <!-- Services End -->
+    <!--? Pricing Card Start -->
+    
+    <!-- Pricing Card End -->
+    <!--? About-1 Area Start -->
+    
+    <!-- About-1 Area End -->
+    <!--? About-2 Area Start -->
+    
+    <!-- About-2 Area End -->
+    <!-- ask questions -->
+   
+    <!-- End ask questions -->
+    <!--? Testimonial Area Start -->
+    
+    <!--? Testimonial Area End -->
+</main>
+<footer>
+    <div class="footer-wrappr " data-background="/static/main/img/gallery/footer-bg.png">
+        
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="footer-copy-right text-center">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                        href="#" target="_blank">CodeBook</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+  <!-- Scroll Up -->
+  <div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+<!-- JS here -->
+
+<script src="{% static 'main/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'main/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'main/js/popper.min.js' %}"></script>
+<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'main/js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'main/js/slick.min.js' %}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'main/js/wow.min.js' %}"></script>
+<script src="{% static 'main/js/animated.headline.js' %}"></script>
+<script src="{% static 'main/js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'main/js/gijgo.min.js' %}"></script>
+
+<!-- Video bg -->
+<script src="{% static 'main/js/jquery.vide.js' %}"></script>
+
+<!-- Nice-select, sticky -->
+<script src="{% static 'main/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'main/js/jquery.sticky.js' %}"></script>
+<!-- Progress -->
+<script src="{% static 'main/js/jquery.barfiller.js' %}"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="{% static 'main/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'main/js/waypoints.min.js' %}"></script>
+<script src="{% static 'main/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'main/js/hover-direction-snake.min.js' %}"></script>
+
+<!-- contact js -->
+<script src="{% static 'main/js/contact.js' %}"></script>
+<script src="{% static 'main/js/jquery.form.js' %}"></script>
+<script src="{% static 'main/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'main/js/mail-script.js' %}"></script>
+<script src="{% static 'main/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="{% static 'main/js/plugins.js' %}"></script>
+<script src="{% static 'main/js/main.js' %}"></script>
+
+</body>
+</html>

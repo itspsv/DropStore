@@ -1,0 +1,331 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    {% load static %}
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Drop-Store</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'main/img/favicon.ico' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/animated-headline.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+   <!---?drag and drop-->
+    
+    <link rel="stylesheet" href="{% static 'edge/css/drag.css' %}">
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+
+
+
+{% csrf_token %}
+  {% if messages %}
+  {% for message in messages %}
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <script>swal({
+          title: "Updated Successfully!",
+          text: "{{message}}",
+          icon: "success",
+          button: "OK",
+      });
+  </script>
+
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+  <script>swal({
+          title: "No Changes Detected :)",
+          text: "{{message}}",
+          icon: "warning",
+          button: "OK",
+      });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+  <script>swal({
+          title: "error :)",
+          text: "{{message}}",
+          icon: "error",
+          button: "OK",
+      });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <script>swal({
+          title: "error :)",
+          text: "{{message}}",
+          icon: "error",
+          button: "OK",
+      });
+  </script>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+    <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'main/img/logo/loder.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <div class="header-area header-transparent">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="#"><img src="{% static 'main/img/11.png' %}" style="width:70px; border-radius: 10px; " alt=""> <span style="font-size: 21px;">Drop Store</span></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">                                                                                          
+                                                <li><a href="{% url 'cam_edge_home' %}">Home</a></li>
+                                                <li><a href="{% url 'register_device' %}">Register Device</a></li>                                                <li><a href="{% url 'cam_u_data' %}">Upload Data</a></li>
+                                                <li><a href="{% url 'cam_view_data' %}">View Data</a></li>
+                                                <li><a href="{% url 'cam_u_profile' %}">My Profile</a>
+                                                </li>
+                                                <li><a href="{% url 'home' %}">Log out</a></li>
+                                                <!-- Button -->
+                                                <!-- <li class="button-header margin-left "><a href="#" class="btn">Sign Up</a></li>
+                                                <li class="button-header"><a href="#" class="btn3">Sign In</a></li> -->
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!-- Slider Area Start-->
+        <div class="slider-area slider-bg ">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                
+                <div class="single-slider d-flex align-items-center  ">
+                    <div class="container-xxl py-6" style="padding-left: 250px;"><br><br><br>
+                        <div class="row justify-content-center">
+                            <h1 class="text-center mt-5 mb-5 px-5 py-5"><b style="background: linear-gradient(to bottom, #a077ff 0%, #ef67ff 100%); border-radius: 20px; font-size: large; color: white;"> &nbsp;My Profile&nbsp; </b></h1>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 mb-5">
+                                <div class="card ">
+                                    <div class="container rounded" style="background-color:  #4C1E53;">
+                                        <div class="row">
+                                            
+                                            <div class="col-md-5 border-right" style="background: linear-gradient(to bottom,  #4C1E53,  #4C1E53 100%);">
+                                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"> <br>
+                                                    <form method='post' enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                    <img class="rounded-pill mt-0 mb-0" style="border-radius: 120px;" width="100px" height="100px"
+                                                        src="/media/{{a.user_photo}}"> <br>
+                                                </div>
+                                                <div class="drop-zone ml-5" style="height: 110px;width: 84%;">
+                                                    <span class="drop-zone__prompt">Update Picture Here</span>
+                                                    <input type="file" accept=".mp4, .jpg, .png, jpeg, .gif" name="file1"  id="file1" class="drop-zone__input" onchange="uploadFile()">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 border-right" style="background-color: #4C1E53;">
+                                                <div class="p-3 py-5">
+                                                    
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-6">
+                                                            <label class="labels text-light">Name</label>
+                                                            <input type="text" class="form-control" name="name" style="height:40px;font-size: larger;border-radius: 15px;" value="{{a.user_name}}" >
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="labels text-light">Email</label>
+                                                            <input type="email" class="form-control" name="email" style="height:40px;font-size: larger;border-radius: 15px" value="{{a.user_email}}">
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <div class="row mt-3">
+                                                        <div class="col-md-6">
+                                                            <label class="labels text-light">Total Devices</label>
+                                                            <input type="text" class="form-control" style="height:40px;font-size: larger;border-radius: 15px" value="{{b}}" readonly>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="labels text-light">Password</label>
+                                                            <input type="password" class="form-control" name="password" style="height:40px;font-size: larger;border-radius: 15px" value="{{a.user_password}}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-6">
+                                                            <label class="labels text-light">Cloud Region</label>
+                                                            <input type="text" class="form-control" style="height:40px;font-size: larger;border-radius: 15px" value="{{a.user_region}}" readonly>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="labels text-light">Phone No</label>
+                                                            <input type="tel" class="form-control" name="contact" style="height:40px;font-size: larger;border-radius: 15px" value="{{a.user_contact}}">
+                                                        </div>
+                                                    </div>
+                    
+                                                    
+                                                    
+                                                    <div class="mt-5 text-center">
+                                                        <button class="btn btn-primary btn-lg profile-button" type="submit"> 
+                                                            Update Profile </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </form>
+                                            <!-- <div class="col-md-4">
+                                        <div class="p-3 py-5">
+                                            <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                                            <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                                            <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                                        </div>
+                                    </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>      
+                
+                      
+            </div>
+            
+            
+        </div>
+       
+        
+    </div>
+    
+</main>
+<footer>
+    <div class="footer-wrappr " data-background="/static/main/img/gallery/footer-bg.png">
+        
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="footer-copy-right text-center">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                        href="#" target="_blank">CodeBook</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+  <!-- Scroll Up -->
+  <div id="back-top" >
+    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+</div>
+
+<!-- JS here -->
+
+<script src="{% static 'main/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'main/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'main/js/popper.min.js' %}"></script>
+<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'main/js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'main/js/slick.min.js' %}"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'main/js/wow.min.js' %}"></script>
+<script src="{% static 'main/js/animated.headline.js' %}"></script>
+<script src="{% static 'main/js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'main/js/gijgo.min.js' %}"></script>
+
+<!-- Video bg -->
+<script src="{% static 'main/js/jquery.vide.js' %}"></script>
+
+<!-- Nice-select, sticky -->
+<script src="{% static 'main/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'main/js/jquery.sticky.js' %}"></script>
+<!-- Progress -->
+<script src="{% static 'main/js/jquery.barfiller.js' %}"></script>
+
+<!-- counter , waypoint,Hover Direction -->
+<script src="{% static 'main/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'main/js/waypoints.min.js' %}"></script>
+<script src="{% static 'main/js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'main/js/hover-direction-snake.min.js' %}"></script>
+
+<!-- contact js -->
+<script src="{% static 'main/js/contact.js' %}"></script>
+<script src="{% static 'main/js/jquery.form.js' %}"></script>
+<script src="{% static 'main/js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'main/js/mail-script.js' %}"></script>
+<script src="{% static 'main/js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="{% static 'main/js/plugins.js' %}"></script>
+<script src="{% static 'main/js/main.js' %}"></script>
+<script src="{% static 'edge/js/drag.js' %}"></script>
+
+<script type="text/javascript">
+    function uploadFile() {
+        var fileUpload = document.getElementById("file1");
+        if (typeof (fileUpload.files) != "undefined") {
+            var size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
+            document.getElementById("size").innerHTML = (size + " KB.");
+            
+        } else {
+            alert("This browser does not support HTML5.");
+        }
+    }
+  </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+1. What is blockchain?
+2. Use cases of blockchain
+3. types of blockchain
+4. charectoristics of blockchain(https://data-flair.training/blogs/features-of-blockchain/)
+5. principles of BC
+6. BC architecture(block, chain, hash, genesis block)
+7. what is hash, hashing algo and cryptography
+8. what does a block contain?
+9. what is mining?
+10. what is bitcoin?
+11. what is double spending?
+12. what is proof of work?
+13. what is nonce?
+14. what is 51% attack?
+15. bitcoin's monetary policy
+16. disadvantages of blockchain
+17. peer to peer trans process
+18. what is ethereum?
+19. bitcoin vs ethereum
+20. proof of stake
+21. smart contracts
+22. blockchain vs traditional database
+23. trapdoor func
+24. target hash
+25. merkel tree

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Edge-Registartion</title>
+
+    <link rel="stylesheet" href="{% static 'main/css/edge.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+</head>
+
+<body>
+    <div><h1 style="color: rgb(17, 247, 228); margin-top: 10px;"> Choose Your Device</h1></div>
+    <div class="slider owl-carousel">
+        
+        <div class="card">
+            <div class="img">
+                <img src="{% static 'main/img/phone.jpg'%}" alt="no-image">
+            </div>
+            <div class="content">
+                <div class="title">
+                    Mobile</div>
+                <div class="sub-title">
+                    64 GB Only</div>
+                <p>
+                    In this Devices, 64 GB Storage is Free</p>
+                    <span>(images, videos, documents)</span>
+                    <span> </span>
+                <div class="btn">
+                    <button>Login</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img">
+                <img src="{% static 'main/img/lap.jpg'%}" alt="no-image">
+            </div>
+            <div class="content">
+                <div class="title">
+                    Laptop</div>
+                <div class="sub-title">
+                    125 GB Only</div>
+                <p>In this Devices, 125 GB Storage is Free</p>
+                <span>(images, videos, applications, software, zip files)</span>
+                <div class="btn">
+                    <button>Login</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img">
+                <img src="{% static 'main/img/camera.jpg'%}" alt="">
+            </div>
+            <div class="content">
+                <div class="title">
+                    IP Camera</div>
+                <div class="sub-title">
+                    32 GB Only</div>
+                <p>In this Devices, 32 GB Storage is Free</p>
+                <span>(images, videos, zip files)</span>
+                <div class="btn">
+                    <button>Login</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img">
+                <img src="{% static 'main/img/tab.jpg'%}" alt="">
+            </div>
+            <div class="content">
+                <div class="title">
+                    Tab</div>
+                <div class="sub-title">
+                   16 GB Only</div>
+                <p>In this Devices, 16 GB Storage is Free</p>
+                <span>(images, videos, zip files, documents)</span>
+                <div class="btn">
+                    <button>Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".slider").owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 2000, //2000ms = 2s;
+            autoplayHoverPause: true,
+        });
+    </script>
+
+</body>
+
+</html>

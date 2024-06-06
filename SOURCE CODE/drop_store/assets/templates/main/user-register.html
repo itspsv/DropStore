@@ -1,0 +1,246 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    {% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Phone-Register</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'main/img/favicon.ico' %}">
+
+	<!-- CSS here -->
+	<link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/progressbar_barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/animated-headline.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/fontawesome-all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+	function loginvalidation() {
+		var name = document.myform.name
+		var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+		var email = document.myform.email
+        var pass = document.myform.pass
+        var phone = document.myform.phone
+        var select = document.myform.select
+        var file = document.myform.file
+		
+
+		
+		if (name.value.length <= 0) {
+			alert("Please enter your name")
+			name.focus();
+			return false;
+		}
+
+	
+		if (email.value.length <= 0) {
+			alert("Please Enter The email")
+			email.focus();
+			return false;
+		}
+        if (pass.value.length <= 0) {
+			alert("Please Enter The password")
+			pass.focus();
+			return false;
+		}
+        if (phone.value.length <= 0) {
+			alert("Please Enter The phone no")
+			phone.focus();
+			return false;
+		}
+        if (select.value <= 0) {
+			alert("Please Enter Your Country")
+			select.focus();
+			return false;
+		}
+        if (file.value.length <= 0) {
+			alert("Please choose an image file")
+			file.focus();
+			return false;
+		}
+		
+	}   
+</script>
+
+{% csrf_token %}
+  {% if messages %}
+  {% for message in messages %}
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <script>swal({
+		  title: "Registered Successfully!",
+		  text: "{{message}}",
+		  icon: "success",
+		  button: "OK",
+	  });
+  </script>
+
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+  <script>swal({
+		  title: "Warning :)",
+		  text: "{{message}}",
+		  icon: "warning",
+		  button: "OK",
+	  });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+  <script>swal({
+		  title: "Email Exist :)",
+		  text: "{{message}}",
+		  icon: "error",
+		  button: "OK",
+	  });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <script>swal({
+		  title: "error :)",
+		  text: "{{message}}",
+		  icon: "error",
+		  button: "OK",
+	  });
+  </script>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+
+<main class="login-body" data-vide-bg="{% static 'main/img/13.jpg' %}">
+    <!-- Login Admin -->
+    <form class="form-default" enctype="multipart/form-data" method="POST" onsubmit='return loginvalidation();' name='myform'>
+        {% csrf_token %} 
+        <div class="login-form">
+            
+            
+            <h2>Register Here</h2>
+        <div class="row"> 
+            <div class="col-6 form-input">
+                <label for="name">Full name</label>
+                <input  type="text" name="name" placeholder="Full name">
+            </div>
+            <div class="col-6 form-input">
+                <label for="name">Email Address</label>
+                <input type="email" name="email" placeholder="Email Address">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-input">
+                <label for="name">Password</label>
+                <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="pass"  placeholder="Password ex:- (Examp123)" class="pass">
+            </div>
+            <div class="col-6 form-input">
+                <label for="name">Phone No</label>
+                <input type="text" name="phone" pattern="[0-9]{10}"  placeholder="Phone" class="name-inp">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-input">
+                <label for="name">Country</label>
+                <input type="text" name="select"  placeholder="Country" >
+            </div>
+            <div class="col-6 form-input">
+                <label for="name">Image</label>
+                <input type="file" name="file"  placeholder="Upload your image" class="file">
+            </div>
+        </div>
+            <div class="col-12 form-input pt-30">
+                <input type="submit" name="submit" value="Register">
+            </div>
+            <!-- Forget Password -->
+            <div class="row justify-content-center">
+            <a href="{% url 'edge_login' %}" class="registration ">login</a>
+            </div>
+        </div>
+    </form>
+    <!-- /end login form -->
+</main>
+<footer>
+    <div class="footer-wrappr " data-background="/static/main/img/gallery/footer-bg.png">
+        
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="footer-copy-right text-center">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                                    This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                        href="#" target="_blank">CodeBook</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="{% static 'main/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static 'main/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'main/js/popper.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static 'main/js/jquery.slicknav.min.js' %}"></script>
+
+    <!-- Video bg -->
+    <script src="{% static 'main/js/jquery.vide.js' %}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'main/js/slick.min.js' %}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static 'main/js/wow.min.js' %}"></script>
+    <script src="{% static 'main/js/animated.headline.js' %}"></script>
+    <script src="{% static 'main/js/jquery.magnific-popup.js' %}"></script>
+
+    <!-- Date Picker -->
+    <script src="{% static 'main/js/gijgo.min.js' %}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="{% static 'main/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.sticky.js' %}"></script>
+    <!-- Progress -->
+    <script src="{% static 'main/js/jquery.barfiller.js' %}"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="{% static 'main/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'main/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'main/js/hover-direction-snake.min.js' %}"></script>
+
+    <!-- contact js -->
+    <script src="{% static 'main/js/contact.js' %}"></script>
+    <script src="{% static 'main/js/jquery.form.js' %}"></script>
+    <script src="{% static 'main/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'main/js/mail-script.js' %}"></script>
+    <script src="{% static 'main/js/jquery.ajaxchimp.min.js' %}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="{% static 'main/js/plugins.js' %}"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+    
+    </body>
+</html>

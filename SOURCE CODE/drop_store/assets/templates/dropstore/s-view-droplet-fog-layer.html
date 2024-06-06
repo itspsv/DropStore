@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Drop-Store--A secure backup system using multi cloud & fog computing</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'dropstore/images/cloud.png' %}">
+    <!-- Custom Stylesheet -->
+    <link href="{% static 'dropstore/css/style.css' %}" rel="stylesheet">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+
+
+
+{% csrf_token %}
+  {% if messages %}
+  {% for message in messages %}
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <script>swal({
+          title: "Deleted Successfully!",
+          text: "{{message}}",
+          icon: "success",
+          button: "OK",
+      });
+  </script>
+
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+  <script>swal({
+          title: "Warning :)",
+          text: "{{message}}",
+          icon: "warning",
+          button: "OK",
+      });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+  <script>swal({
+          title: "error :)",
+          text: "{{message}}",
+          icon: "error",
+          button: "OK",
+      });
+  </script>
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <script>swal({
+          title: "error :)",
+          text: "{{message}}",
+          icon: "error",
+          button: "OK",
+      });
+  </script>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="{% url 'dropstore_index' %}">
+                    <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="{% static 'dropstore/images/logo-compact.png' %}" alt=""></span>
+                    <span class="brand-title" style="color: white;">
+                        <i class="fa fa-folder" aria-hidden="true"></i></i>&nbsp;&nbsp;DROPSTORE
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">    
+            <div class="header-content clearfix">
+                
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <div class="drop-down animated flipInX d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        
+                        
+                        
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="{% static 'dropstore/images/user/1.png '%}" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        
+                                        </li>
+                                        <li><a href="{% url 'home' %}"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">           
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <!-- <li class="nav-label">Dashboard</li> -->
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a class="" href="{% url 'dropstore_index' %}" aria-expanded="false">
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">Dashboard</span>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a class="" href="{% url 'dropstore_edge_nodes' %}" aria-expanded="false">
+                            <i class="fa fa-podcast menu-icon"></i><span class="nav-text">Edge Nodes</span>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a class="" href="{% url 'dropstore_droplet_fog_layer' %}" aria-expanded="false">
+                            <i class="icon-layers menu-icon"></i><span class="nav-text">Droplet Fog Layer</span>
+                        </a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    
+                    <!-- /# column -->
+                    
+                    
+                    <div class="col-lg-10">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Droplet Fog Layer</h4>
+                                <div class="table-responsive">
+                                    <table class="table header-border table-hover verticle-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">File Id</th>
+                                                <th scope="col">File Type</th>
+                                                <th scope="col">File Name</th>
+                                                <th scope="col">Memory Consumed</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in f %}
+                                            <tr>
+                                                <td>{{i.file_id}}</td>
+                                                <td>{{i.file_type}}</td>
+                                                <td>
+                                                    {{i.file_name}}
+                                                </td>
+                                                <td>{{i.files_size}} MB
+                                                </td>
+                                                <td>{{i.datetime_created}}</td>
+                                                
+                                                <td>
+                                                    <a href="{% url 'data_delete' i.file_id device_id %}">
+                                                        <button type="button" class="btn mb-1 btn-rounded btn-outline-danger"><i class="icon-trash menu-icon"></i>&nbsp;Remove</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <footer class="row  footer justify-content-center">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <p>Copyright © 2022. All rights reserved.<br><br>
+                Designed and Developed By: <a style="color:orange;" href="https://www.codebook.in" target="_blank">Codebook</a>
+             </p>
+          
+        </div>
+      </footer>>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="{% static 'dropstore/plugins/common/common.min.js' %}"></script>
+    <script src="{% static 'dropstore/js/custom.min.js' %}"></script>
+    <script src="{% static 'dropstore/js/settings.js' %}"></script>
+    <script src="{% static 'dropstore/js/gleek.js' %}"></script>
+    <script src="{% static 'dropstore/js/styleSwitcher.js' %}"></script>
+
+</body>
+
+</html>
